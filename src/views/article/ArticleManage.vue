@@ -2,9 +2,9 @@
     <el-card class="page-container">
         <template #header>
             <div class="header">
-                <span>文章管理</span>
+                <span style="font-weight: bold; font-size: larger;">文章管理</span>
                 <div class="extra">
-                    <el-button type="primary" @click="visibleDrawer = true">添加文章</el-button>
+                    <el-button class="buttons" type="primary" @click="visibleDrawer = true">添加文章</el-button>
                 </div>
             </div>
         </template>
@@ -24,7 +24,7 @@
                 </el-select>
             </el-form-item>
             <el-form-item>
-                <el-button type="primary" @click="articleList">搜索</el-button>
+                <el-button class="button" type="primary" @click="articleList">搜索</el-button>
                 <el-button @click="categoryId = '', state = '', articleList()">重置</el-button>
             </el-form-item>
         </el-form>
@@ -59,7 +59,7 @@
                 <el-input v-model="articleModel.title" placeholder="请输入标题"></el-input>
             </el-form-item>
             <el-form-item label="文章分类" prop="categoryId">
-                <el-select placeholder="请选择" v-model="articleModel.categoryId">
+                <el-select placeholder="请选择" v-model="articleModel.categoryId ">
                     <el-option v-for="c in categorys" :key="c.id" :label="c.categoryName" :value="c.id">
                     </el-option>
                 </el-select>
@@ -339,6 +339,7 @@ let deleteArticle = (row) => {
 .page-container {
     min-height: 100%;
     box-sizing: border-box;
+    border-radius: 12px;
 
     .header {
         display: flex;
@@ -384,5 +385,22 @@ let deleteArticle = (row) => {
     :deep(.ql-editor) {
         min-height: 200px;
     }
+}
+
+.buttons{
+    background-color: #A5BD8A;
+    color: black;
+    font-weight: bold;
+    border-color: transparent;
+    width: 100px;
+    height: 40px;
+    letter-spacing: 1px;
+}
+
+.button{
+    background-color: #A5BD8A;
+    color: black;
+    border-color: transparent;
+
 }
 </style>

@@ -1,11 +1,24 @@
 <template>
-    <el-row class="login-page">
-        <el-col :span="12" class="bg"></el-col>
+    <div class="login-page">
+    <el-row>
+        <el-col :span="2" class="container">
+            <div class="image-container">
+                <img src="@/assets/logo.jpg" alt="logo">
+            </div>
+        </el-col>
+        <el-col :span="6" class="container">
+            <div class="title-container">
+                <h1>WELCOME TO MY BLOG</h1>
+            </div>
+        </el-col>
+    </el-row>
+    <el-row>
+        <div class="form::before"></div>
         <el-col :span="6" :offset="3" class="form">
             <!-- 注册表单 -->
-            <el-form ref="form" size="large" autocomplete="off" v-if="isRegister" :model="registerData" :rules="rules">
+            <el-form ref="form" size="large" autocomplete="off" v-if="isRegister" :model="registerData" :rules="rules" >
                 <el-form-item>
-                    <h1>注册</h1>
+                    <h2 style="color: #333;">注册</h2>
                 </el-form-item>
                 <el-form-item prop="username">
                     <el-input :prefix-icon="User" v-model="registerData.username" placeholder="请输入用户名"></el-input>
@@ -33,7 +46,7 @@
             <!-- 登录表单 -->
             <el-form ref="form" size="large" autocomplete="off" v-else :model="registerData" :rules="rules">
                 <el-form-item>
-                    <h1>登录</h1>
+                    <h2 style="color: #333;">登录</h2>
                 </el-form-item>
                 <el-form-item prop="username">
                     <el-input :prefix-icon="User" v-model="registerData.username" placeholder="请输入用户名"></el-input>
@@ -60,6 +73,7 @@
             </el-form>
         </el-col>
     </el-row>
+</div>
 </template>
 <script setup>
 import { User, Lock } from '@element-plus/icons-vue'
@@ -109,7 +123,7 @@ const tokenStore = useTokenStore()
 
 const register = async () => {
     let result = await userRegisterService(registerData.value)
-    ElMessage.success(result.msg ? result.msg : "注册成功!")
+    ElMessage.success(result.msg ? result.msg : "注册成功! ")
 }
 
 const login = async () => {
@@ -130,27 +144,54 @@ const clearRegisterData = () => {
 
 
 <style lang="scss" scoped>
+
 /* 样式 */
 .login-page {
-    height: 100vh;
-    background-color: #fff;
-
-    .bg {
-        background: url('@/assets/logo.png') no-repeat 60% center / 240px auto,
-            url('@/assets/1.jpg') no-repeat center / cover;
-        border-radius: 0 20px 20px 0;
-    }
-
-    .form {
+    // width: 100%;
+    // height: 100vh;
+    background-image: url('@/assets/1111.png'); /* 背景图片路径 */
+    // background-size: cover;
+    
+    .container{
         display: flex;
-        flex-direction: column;
+        align-items: center; /* 垂直居中 */
+        justify-content: center; /* 水平居中 */
+        margin-left: 25%;
+    }
+    .img-container{
+        flex: 0 0 auto; /* 不放大缩小，保持原有大小 */
+        margin-right: 20px; /* 图片与文字之间的间距 */
+    }
+    .title-container{
+        flex: 1; /* 自动扩展填充剩余空间 */
+    }
+    .title-container h1{
+        // font-family: 'Montserrat', sans-serif;
+        // font-weight: 700;
+        font-size: 61px; 
+        font-weight:bold;
+        color: #333;
+        margin-bottom: 10px;
+    }
+    .form::before{
+        content: '';
+        position: absolute;
+        top: 50%; /* 垂直居中 */
+        left: -20%;
+        transform: translateY(-50%); /* 向下偏移50%的高度 */
+        width: 140%;
+        height: 80%; /* 高度占据 .form 的一半 */
+        background-color: rgba(0, 0, 0, 0.2); /* 背景遮罩颜色和透明度 */
+        z-index: 0; /* 确保背景遮罩在 .form 的背景下方 */
+    }
+    .form {
+        position: relative;
+        display: flex;
+        flex-direction:column;
         justify-content: center;
         user-select: none;
-
-        .title {
-            margin: 0 auto;
-        }
-
+        margin-left:35%;
+        
         .button {
             width: 100%;
         }
@@ -161,5 +202,6 @@ const clearRegisterData = () => {
             justify-content: space-between;
         }
     }
+   
 }
 </style>

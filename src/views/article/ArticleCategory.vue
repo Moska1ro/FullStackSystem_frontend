@@ -2,14 +2,14 @@
     <el-card class="page-container">
         <template #header>
             <div class="header">
-                <span>文章分类</span>
+                <span style="font-weight: bold; font-size: larger;">文章分类</span>
                 <div class="extra">
-                    <el-button type="primary"
+                    <el-button type="primary" class="buttons"
                         @click="clearCategoryModelData(); dialogVisible = true; dialogVisibleTitle = '添加分类'">添加分类</el-button>
                 </div>
             </div>
         </template>
-        <el-table :data="categorys" style="width: 100%">
+        <el-table :data="categorys " style="width: 100%">
             <el-table-column label="序号" width="100" type="index"> </el-table-column>
             <el-table-column label="分类名称" prop="categoryName"></el-table-column>
             <el-table-column label="分类别名" prop="categoryAlias"></el-table-column>
@@ -20,7 +20,7 @@
                 </template>
             </el-table-column>
             <template #empty>
-                <el-empty description="没有数据" />
+                <el-empty description="没有数据 " />
             </template>
         </el-table>
 
@@ -162,11 +162,22 @@ const deleteCategory = (row) => {
 .page-container {
     min-height: 100%;
     box-sizing: border-box;
+    border-radius: 12px;
 
     .header {
         display: flex;
         align-items: center;
         justify-content: space-between;
     }
+}
+
+.buttons{
+    background-color: #A5BD8A;
+    color: black;
+    font-weight: bold;
+    border-color: transparent;
+    width: 100px;
+    height: 40px;
+    letter-spacing: 1px;
 }
 </style>

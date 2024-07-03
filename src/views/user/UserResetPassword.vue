@@ -56,10 +56,10 @@ const commitResetPassword = async () => {
 
 
 <template>
-    <el-card class="page-container">
+    <el-card class="page-container" style="border-radius: 12px">
         <template #header>
             <div class="header">
-                <span>修改密码</span>
+                <span>修改密码 </span>
             </div>
         </template>
         <el-row>

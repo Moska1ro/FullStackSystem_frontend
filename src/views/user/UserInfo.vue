@@ -35,10 +35,10 @@ const updateUserInfo = async () => {
 
 </script>
 <template>
-    <el-card class="page-container">
+    <el-card class="page-container" style="border-radius: 12px;">
         <template #header>
             <div class="header">
-                <span>基本资料</span>
+                <span style="font-weight: bold; font-size: larger;">基本资料 </span>
             </div>
         </template>
         <el-row>
@@ -54,10 +54,18 @@ const updateUserInfo = async () => {
                         <el-input v-model="userInfo.email"></el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="updateUserInfo">提交修改</el-button>
+                        <el-button type="primary" @click="updateUserInfo" class="button">提交修改</el-button>
                     </el-form-item>
                 </el-form>
             </el-col>
         </el-row>
     </el-card>
 </template>
+
+<style>
+.button{
+    background-color: #A5BD8A;
+    color: black;
+    border-color: transparent;
+}
+</style>
