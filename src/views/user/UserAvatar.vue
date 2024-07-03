@@ -42,10 +42,10 @@ const updateAvatar = async () => {
 </script>
 
 <template>
-    <el-card class="page-container">
+    <el-card class="page-container" style="border-radius: 12px">
         <template #header>
             <div class="header">
-                <span>更换头像</span>
+                <span>更换头像 </span>
             </div>
         </template>
         <el-row>
