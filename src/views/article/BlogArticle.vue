@@ -7,7 +7,8 @@
           <img :src="props.display.coverImg" alt="封面" class="header-image">
         </div>
         <div class="card-body">
-          <span class="Category">主题:{{ props.display.category }}</span>
+          <span class="Category">#{{ props.display.category }}&nbsp &nbsp</span>
+          <span class="Category">{{props.display.createTime}}</span>
         </div>
       </template>
       <el-text v-html="props.display.content"></el-text>
@@ -20,6 +21,7 @@ let props = defineProps(["display"])
 </script>
 <style scoped>
 .card {
+  border-radius:12px;
   width: 100%;
 }
 
@@ -42,14 +44,16 @@ let props = defineProps(["display"])
   /* 背景图片路径 */
   background-size: cover;
   /* 背景图片尺寸适应 */
-  background-position: center;
+  /* background-position: center; */
   /* 背景图片居中 */
   display: flex;
+
   align-items: center;
-  justify-content: center;
-}
+  justify-content: center; 
+} 
 
 .title {
+  left: 0px;
   font-size: 40px;
   /* 设置标题字体大小 */
   color: #ffffff;
@@ -74,6 +78,8 @@ let props = defineProps(["display"])
   /* 背景遮罩颜色和透明度 */
   z-index: 0;
   /* 确保背景遮罩在背景图片下方 */
+  justify-content: flex-start; /* 标题左对齐 */
+  padding-left: 10px; /* 根据需要调整左侧内边距 */
 }
 
 .card-body {
@@ -89,6 +95,8 @@ let props = defineProps(["display"])
 
 .Category {
   margin-left: 20px;
+  margin-top: 15px;
   font-size: 15px;
+  color: grey;
 }
 </style>
