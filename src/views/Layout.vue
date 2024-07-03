@@ -8,7 +8,7 @@
                     <el-icon>
                         <Management />
                     </el-icon>
-                    <span>文章推荐</span>
+                    <span>文章推荐 </span>
                 </el-menu-item>
                 <el-menu-item index="/article/category">
                     <el-icon>
