@@ -1,14 +1,15 @@
 <template>
     <el-container class="layout-container">
         <!-- 左侧菜单 -->
-        <el-aside width="200px">
+        <el-aside width="200px" class="custom-menu" style="border-radius:12px">
             <div class="el-aside__logo"></div>
-            <el-menu active-text-color="#ffd04b" background-color="#232323" text-color="#fff" router>
+            <!-- <el-menu active-text-color="#ffd04b" background-color="#232323" text-color="#fff" router> -->
+                <el-menu active-text-color="#50673A" router>
                 <el-menu-item index="/article/recommend">
                     <el-icon>
                         <Management />
                     </el-icon>
-                    <span>文章推荐 </span>
+                    <span>文章推荐</span>
                 </el-menu-item>
                 <el-menu-item index="/article/category">
                     <el-icon>
@@ -53,8 +54,8 @@
         <!-- 右侧主区域 -->
         <el-container>
             <!-- 头部区域 -->
-            <el-header>
-                <h3>欢迎 <strong>{{ userInfoStore.info.nickname }}</strong> 来到xxxxxxxxxxxxx系统</h3>
+            <el-header style="margin-left: 20px;height: 100px; border-radius: 12px;">
+                <h3 style="font-size: 25px;">Welcome <strong>{{ userInfoStore.info.nickname }}</strong> !</h3>
                 <el-dropdown placement="bottom-end" @command="handleCommand">
                     <span class="el-dropdown__box">
                         <el-avatar :src="userInfoStore.info.userPic ? userInfoStore.info.userPic : avatar" />
@@ -103,7 +104,7 @@ import { userInfoService } from '@/api/user.js'
 
 const userInfoStore = useUserInfoStore()
 
-const getUserInfo = async () => {
+const getUserInfo = async () => { 
     let result = await userInfoService()
 
     userInfoStore.setInfo(result.data)
@@ -163,7 +164,7 @@ const deleteCategory = () => {
     height: 100vh;
 
     .el-aside {
-        background-color: #232323;
+        background-color:white;
 
         &__logo {
             height: 120px;
@@ -204,5 +205,28 @@ const deleteCategory = () => {
         font-size: 14px;
         color: #666;
     }
+}
+.custom-menu .el-menu-item.is-active,
+.custom-menu .el-sub-menu__title.is-active {
+  background-color: #739553;
+  opacity: 90%;
+  border-radius:6px;
+  color: #fff !important; /* 选中时文字颜色 */
+}
+
+.custom-menu .el-menu-item:hover,
+.custom-menu .el-sub-menu__title:hover {
+  background-color: #ededec; /* 鼠标悬停时的背景色 */
+
+  color: black; /* 鼠标悬停时的文字颜色 */
+}
+
+.el-aside {
+  background-color: transparent;
+}
+
+.el-menu {
+  background-color: transparent;
+  border-right: none;
 }
 </style>
