@@ -1,6 +1,6 @@
 <template>
-    <el-button type="primary" @click="getRecommend">换一换</el-button>
-    <el-table :data="articles" style="width: 100%">
+    <el-button type="primary" @click="getRecommend" class="button">换一换</el-button>
+    <el-table :data="articles" style="width: 100%; border-radius: 12px; margin-top: 10px;" >
         <el-table-column label="文章标题" width="400" prop="title"></el-table-column>
         <el-table-column label="作者" prop="createUser"></el-table-column>
         <el-table-column label="主题" prop="categoryName">
@@ -8,7 +8,7 @@
         <el-table-column label="发表时间" prop="createTime"> </el-table-column>
         <el-table-column label="状态" prop="state"></el-table-column>
         <el-table-column label="操作" width="100">
-            <template #default="{ row }">
+            <template #default="{ row}">
                 <el-button :icon="View" circle plain type="success" @click="openBlog(row)"></el-button>
             </template>
         </el-table-column>
@@ -58,4 +58,11 @@ onBeforeMount(() => {
     getRecommend();
 })
 </script>
-<style scoped></style>
+<style scoped>
+.button{
+    background-color: #A5BD8A;
+    color: black;
+    border-color: transparent;
+
+}
+</style>
