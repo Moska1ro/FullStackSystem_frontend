@@ -30,12 +30,13 @@ instance.interceptors.request.use(
 )
 
 //添加响应拦截器
+
 instance.interceptors.response.use(
     result => {
         if (result.data.code === 0) {
             return result.data;
         }
-        // debugger
+        debugger // 接口测试拦截器，当接口返回错误时，会在此处停止运行
         ElMessage.error(result.data.msg ? result.data.msg : "服务异常!")
         return Promise.reject(result.data)
     },
@@ -46,7 +47,7 @@ instance.interceptors.response.use(
         } else {
             ElMessage.error('服务异常!');
         }
-        return Promise.reject(err);//异步的状态转化成失败的状态
+        return Promise.reject(err);
     }
 )
 
