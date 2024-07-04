@@ -4,7 +4,7 @@
         <el-aside width="200px" class="custom-menu" style="border-radius:12px">
             <div class="el-aside__logo"></div>
             <!-- <el-menu active-text-color="#ffd04b" background-color="#232323" text-color="#fff" router> -->
-                <el-menu active-text-color="#50673A" router>
+            <el-menu active-text-color="#50673A" router>
                 <el-menu-item index="/article/recommend">
                     <el-icon>
                         <Management />
@@ -104,7 +104,7 @@ import { userInfoService } from '@/api/user.js'
 
 const userInfoStore = useUserInfoStore()
 
-const getUserInfo = async () => { 
+const getUserInfo = async () => {
     let result = await userInfoService()
 
     userInfoStore.setInfo(result.data)
@@ -164,11 +164,11 @@ const deleteCategory = () => {
     height: 100vh;
 
     .el-aside {
-        background-color:white;
+        background-color: white;
 
         &__logo {
             height: 120px;
-            background: url('@/assets/logo.png') no-repeat center / 120px auto;
+            background: url('@/assets/logo.svg') no-repeat center / 120px auto;
         }
 
         .el-menu {
@@ -206,27 +206,31 @@ const deleteCategory = () => {
         color: #666;
     }
 }
+
 .custom-menu .el-menu-item.is-active,
 .custom-menu .el-sub-menu__title.is-active {
-  background-color: #739553;
-  opacity: 90%;
-  border-radius:6px;
-  color: #fff !important; /* 选中时文字颜色 */
+    background-color: #739553;
+    opacity: 90%;
+    border-radius: 6px;
+    color: #fff !important;
+    /* 选中时文字颜色 */
 }
 
 .custom-menu .el-menu-item:hover,
 .custom-menu .el-sub-menu__title:hover {
-  background-color: #ededec; /* 鼠标悬停时的背景色 */
+    background-color: #ededec;
+    /* 鼠标悬停时的背景色 */
 
-  color: black; /* 鼠标悬停时的文字颜色 */
+    color: black;
+    /* 鼠标悬停时的文字颜色 */
 }
 
 .el-aside {
-  background-color: transparent;
+    background-color: transparent;
 }
 
 .el-menu {
-  background-color: transparent;
-  border-right: none;
+    background-color: transparent;
+    border-right: none;
 }
 </style>

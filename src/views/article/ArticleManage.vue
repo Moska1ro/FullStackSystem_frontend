@@ -138,6 +138,7 @@ import {
     articleCategoryDetailService, articleDeleteService
 } from '@/api/article.js';
 import BlogArticle from './BlogArticle.vue';
+import { useUserInfoStore } from '../../stores/userinfo'
 
 const rules = {
     title: { required: true, message: '请输入标题', trigger: 'blur' },
@@ -217,7 +218,7 @@ const onCurrentChange = (num) => {
 
 //回显文章分类
 const articleCategoryList = async () => {
-    let result = await articleCategoryListService()
+    let result = await articleCategoryListService(useUserInfoStore().info.id)
     categorys.value = result.data
 }
 articleCategoryList()

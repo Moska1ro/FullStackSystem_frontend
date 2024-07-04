@@ -36,7 +36,8 @@
             <template #footer>
                 <span class="dialog-footer">
                     <el-button @click="dialogVisible = false">取消</el-button>
-                    <el-button type="primary" @click="dialogVisibleTitle == '添加分类' ? addCategory() : updateCategory()"> 确认
+                    <el-button type="primary" @click="dialogVisibleTitle == '添加分类' ? addCategory() : updateCategory()">
+                        确认
                     </el-button>
                 </span>
             </template>
@@ -52,6 +53,8 @@ import {
 } from '@element-plus/icons-vue'
 import { ElMessage, formatter } from 'element-plus'
 import { ref } from 'vue'
+import { useUserInfoStore } from '../../stores/userinfo';
+const userInfoStore = useUserInfoStore();
 const categorys = ref([
     {
         "id": 3,
@@ -64,7 +67,7 @@ const categorys = ref([
 
 import { articleCategoryListService } from '@/api/article.js'
 const articleCategoryList = async () => {
-    let result = await articleCategoryListService()
+    let result = await articleCategoryListService(userInfoStore.info.id)
     categorys.value = result.data
 }
 articleCategoryList()

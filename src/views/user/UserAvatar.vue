@@ -1,6 +1,33 @@
+<template>
+    <el-card class="page-container" style="border-radius: 12px">
+        <template #header>
+            <div class="header">
+                <span>更换头像 </span>
+            </div>
+        </template>
+        <el-row>
+            <el-col :span="12">
+                <el-upload auto-upload="true" ref="uploadRef" class="avatar-uploader" action="/api/upload"
+                    :headers="{ 'Authorization': tokenStore.token }" :show-file-list="false"
+                    :on-success="uploadSuccess">
+                    <img v-if="imgUrl" :src="imgUrl" class="avatar" />
+                    <img v-else src="../../assets/avatar.jpg" width="278" />
+                </el-upload>
+                <br />
+                <el-button type="primary" :icon="Plus" size="large"
+                    @click="uploadRef.$el.querySelector('input').click()">
+                    选择图片
+                </el-button>
+                <el-button type="success" @click="updateAvatar" :icon="Upload" size="large">
+                    上传头像
+                </el-button>
+            </el-col>
+        </el-row>
+    </el-card>
+</template>
 <script setup>
 import { Plus, Upload } from '@element-plus/icons-vue'
-import {ref} from 'vue'
+import { ref } from 'vue'
 import avatar from '@/assets/default.png'
 const uploadRef = ref()
 import { ElMessage } from 'element-plus';
@@ -8,12 +35,7 @@ import { ElMessage } from 'element-plus';
 //获取Token
 import { useTokenStore } from '@/stores/token.js';
 const tokenStore = useTokenStore()
-
-
-
 //用户头像地址
-
-
 //用户头像回显
 import { useUserInfoStore } from '@/stores/userinfo.js';
 const userInfoStore = useUserInfoStore()
@@ -35,44 +57,13 @@ const updateAvatar = async () => {
     ElMessage.success(result.msg ? result.msg : "更新图片成功")
 
     userInfoStore.info.userPic = imgUrl.value
-    
+
 }
 
 
 </script>
 
-<template>
-    <el-card class="page-container" style="border-radius: 12px">
-        <template #header>
-            <div class="header">
-                <span>更换头像 </span>
-            </div>
-        </template>
-        <el-row>
-            <el-col :span="12">
-                <el-upload 
-                    auto-upload="true"
-                    ref="uploadRef"
-                    class="avatar-uploader" 
-                    action="/api/upload"
-                    :headers="{'Authorization': tokenStore.token}"
-                    :show-file-list="false"
-                    :on-success="uploadSuccess"
-                    >
-                    <img v-if="imgUrl" :src="imgUrl" class="avatar" />
-                    <img v-else src="avatar" width="278" />
-                </el-upload>
-                <br />
-                <el-button type="primary" :icon="Plus" size="large"  @click="uploadRef.$el.querySelector('input').click()">
-                    选择图片
-                </el-button>
-                <el-button type="success" @click="updateAvatar" :icon="Upload" size="large">
-                    上传头像
-                </el-button>
-            </el-col>
-        </el-row>
-    </el-card>
-</template>
+
 
 <style lang="scss" scoped>
 .avatar-uploader {

@@ -20,6 +20,10 @@ const routes = [
         component: LayoutVue,
         children: [
             {
+                path: "/",
+                redirect: "/article/recommend"
+            },
+            {
                 path: '/article/recommend',
                 component: ArticleRecommend
             },

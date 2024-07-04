@@ -1,8 +1,8 @@
 import request from '@/utils/request.js'
 
 //分类查询
-export const articleCategoryListService = () => {
-    return request.get('/category')
+export const articleCategoryListService = (id) => {
+    return request.get('/category?id=' + id)
 }
 
 // 分类详情
